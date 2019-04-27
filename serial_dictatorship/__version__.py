@@ -1,0 +1,11 @@
+__title__ = 'Serial Dictatorship'
+__description__ = 'solve serial dictatorship'
+__url__ = 'https://github.com/kkiyama117/serial_dictatorship'
+__version__ = '0.1.1'
+__build__ = 0x000101
+__author__ = 'kkiyama117'
+__author_email__ = 'k.kiyama117@gmail.com'
+__maintainer__ = 'kkiyama117'
+__maintainer_email__ = 'kkiyama117'
+__license__ = 'MIT'
+__copyright__ = 'Copyright 2019 kkiyama117'
