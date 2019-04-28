@@ -5,7 +5,7 @@
 
 serial dictatorship の解決をさせる
 """
-
+from serial_dictatorship.utils import format_priorities
 from serial_dictatorship.Factories import MainFactory
 
 
@@ -36,7 +36,7 @@ def prepare_priorities(**kwargs) -> list:
     """
     priorities: list = kwargs.get('priorities', None)
     if priorities is not None and type(priorities) is list:
-        return priorities
+        return format_priorities(priorities)
     else:
         raise ValueError("please set priorities")
 
@@ -53,16 +53,14 @@ def main():
         description='Run the factory to solve serial dictatorship.',
         epilog="For detail, see github, sphinx and source code",
     )
-    parser.add_argument('priorities', nargs='*',
-                        const="official",
-                        action='store',
+    parser.add_argument('priorities', nargs='+',
                         help="set strings like 'ACDBE, BDEAC, ABCDE'.",
                         metavar=None)
     # main parser
     args = parser.parse_args()
     kwargs = vars(args)
     # call event_parser
-    # print(kwargs)
+    print(kwargs)
     print(serial_dictatorship('run', prepare_priorities(**kwargs)))
 
 
