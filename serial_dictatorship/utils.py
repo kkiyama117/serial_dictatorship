@@ -20,6 +20,15 @@ def create_priority_list(priority: list):
 
 
 # kwargsに渡される文字列の形式から問題ないかチェック
+# factories の形式(一文字が一個)に依存しているので,形式が変わると使えない
 def check_priorities(priorities):
-    len_list = [len(priority) for priority in priorities]
-    return len(len_list) is len_list.count(len_list[0])
+    pri_set_list = [set(priority) for priority in priorities]
+    pri_set = first_pri_set = pri_set_list[0]
+    for _pri_set in pri_set_list:
+        pri_set = pri_set & _pri_set
+    if len(pri_set) is not len(priorities[0]):
+        raise ValueError("please give priorities having same length")
+    elif len(pri_set) is not len(first_pri_set):
+        raise ValueError("please give priorities having same things")
+    else:
+        return True

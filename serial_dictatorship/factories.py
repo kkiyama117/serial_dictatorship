@@ -8,23 +8,21 @@ from serial_dictatorship.utils import format_priorities, check_priorities
 # Person, priority, 等の準備
 def prepare(priorities: list):
     # create things
-    if not check_priorities(priorities):
-        raise ValueError("please give priorities having same length")
-    else:
+    if check_priorities(priorities):
         _priorities = format_priorities(priorities)
-        # 今回は取り敢えず一文字ずつで対象を作る
-        things = [Thing(name) for name in sorted(_priorities[0])]
-        print("create: ", ["things:{}".format(thing.name) for thing in things])
+    # 今回は取り敢えず一文字ずつで対象を作る
+    things = [Thing(name) for name in sorted(_priorities[0])]
+    print("create: ", ["things:{}".format(thing.name) for thing in things])
     # person with priority
     people = [Person('person{}'.format(count + 1), str_priority) for count, str_priority in
               enumerate(_priorities)]
     print("create: ", [person.name for person in people])
-    return people
+    return people, things
 
 
 def run(priorities: list):
     # Person, priority, 等の準備
-    people = prepare(priorities)
+    people, things = prepare(priorities)
 
     # step 0
     # peopleをランダムに順番付けする
