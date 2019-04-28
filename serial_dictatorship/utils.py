@@ -32,3 +32,8 @@ def check_priorities(priorities):
         raise ValueError("please give priorities having same things")
     else:
         return True
+
+
+# 出力されたlist (Person) を整形
+def format_output(output: list):
+    return ["{}: get {}".format(person.name, person.thing) for person in output]
