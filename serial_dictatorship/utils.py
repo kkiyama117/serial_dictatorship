@@ -1,13 +1,8 @@
 from serial_dictatorship.models import Thing
 
 
-# TODO: 関数型プログラミングで(forを回さない事で)数十倍早く出来ますが、そこまでのものを想定してないので簡略に見通しを優先しました.
 def format_priorities(priorities):
-    result = []
-    for priority in priorities:
-        a = [n for n in priority]
-        result.append(a)
-    return result
+    return [list(priority) for priority in priorities]
 
 
 def _is_things_list(priority):
@@ -22,3 +17,9 @@ def create_priority_list(priority: list):
         return priority
     else:
         return [Thing(name) for name in priority]
+
+
+# kwargsに渡される文字列の形式から問題ないかチェック
+def check_priorities(priorities):
+    len_list = [len(priority) for priority in priorities]
+    return len(len_list) is len_list.count(len_list[0])

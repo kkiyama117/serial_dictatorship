@@ -28,6 +28,7 @@ def run(**kwargs):
     hookを呼び出す.
 
     Args:
+        kwargs(dict): kwargs for priorities like `{'priorities':["acdb","bacd"]}`
 
 
     Returns:

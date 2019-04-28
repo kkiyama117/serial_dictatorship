@@ -5,6 +5,9 @@ class Thing:
     def __eq__(self, other):
         return self.name is other.name
 
+    def __str__(self):
+        return "things: {}".format(self.name)
+
 
 class Person:
     def __init__(self, name: str, priority: list):

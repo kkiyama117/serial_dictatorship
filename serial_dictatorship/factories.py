@@ -2,13 +2,22 @@
 import random
 
 from serial_dictatorship.models import Person, Thing
-from serial_dictatorship.utils import _is_things_list
+from serial_dictatorship.utils import format_priorities, check_priorities
 
 
 # Person, priority, 等の準備
 def prepare(priorities: list):
+    # create things
+    if not check_priorities(priorities):
+        raise ValueError("please give priorities having same length")
+    else:
+        _priorities = format_priorities(priorities)
+        # 今回は取り敢えず一文字ずつで対象を作る
+        things = [Thing(name) for name in sorted(_priorities[0])]
+        print("create: ", ["things:{}".format(thing.name) for thing in things])
+    # person with priority
     people = [Person('person{}'.format(count + 1), str_priority) for count, str_priority in
-              enumerate(priorities)]
+              enumerate(_priorities)]
     print("create: ", [person.name for person in people])
     return people
 

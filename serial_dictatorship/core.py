@@ -5,7 +5,6 @@
 
 serial dictatorship の解決をさせる
 """
-from serial_dictatorship.utils import format_priorities
 import serial_dictatorship.factories as sdf
 
 
@@ -15,10 +14,8 @@ def serial_dictatorship(method, priorities):
     call any function
 
     Args:
-        method (str): 取得の仕方. 'get' or 'get_all'
-        priorities(list): kwargs for method selected by args
-            date or (year and month) ... get_all method
-            url ... get
+        method (str): 取得の仕方. 'run'
+        priorities(list): kwargs for priorities
 
     Returns:
         method selected by args
@@ -36,7 +33,7 @@ def format_kwargs(**kwargs) -> list:
     """
     priorities: list = kwargs.get('priorities', None)
     if priorities is not None and type(priorities) is list:
-        return format_priorities(priorities)
+        return priorities
     else:
         raise ValueError("please set priorities")
 
