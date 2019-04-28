@@ -6,7 +6,7 @@
 serial dictatorship の解決をさせる
 """
 from serial_dictatorship.utils import format_priorities
-from serial_dictatorship.Factories import MainFactory
+import serial_dictatorship.factories as sdf
 
 
 def serial_dictatorship(method, priorities):
@@ -23,10 +23,10 @@ def serial_dictatorship(method, priorities):
     Returns:
         method selected by args
     """
-    return getattr(MainFactory, method)(priorities)
+    return getattr(sdf, method)(priorities)
 
 
-def prepare_priorities(**kwargs) -> list:
+def format_kwargs(**kwargs) -> list:
     """select args from kwargs
 
     Args:
@@ -60,8 +60,8 @@ def main():
     args = parser.parse_args()
     kwargs = vars(args)
     # call event_parser
-    print(kwargs)
-    print(serial_dictatorship('run', prepare_priorities(**kwargs)))
+    # print(kwargs)
+    print(serial_dictatorship('run', format_kwargs(**kwargs)))
 
 
 if __name__ == '__main__':
