@@ -14,7 +14,7 @@ pip install serial_dictatorship
 
 ### run script
 ```bash
-parse_event [-h] [--help]
+serial_dictatorship ADECB CEDAB ABDCE (...) [-h] [--help]
 ```
 
 ## Docs
